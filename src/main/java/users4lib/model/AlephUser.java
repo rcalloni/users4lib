@@ -32,9 +32,12 @@ public class AlephUser {
         addressList.add(address);
     }
 
-    public void saveXML(Document doc, Element e)
+    public void saveXML(Document doc, Element parent)
+
     {
-        global.saveXML(doc,e);
+        Element patronRecord=doc.createElement("patron-record");
+        parent.appendChild(patronRecord);
+        global.saveXML(doc,patronRecord);
 
     }
 

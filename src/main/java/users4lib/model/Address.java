@@ -10,7 +10,7 @@ public class Address {
 
     private String recordAction;
     private String z304Id;
-    private String getZ304sequence;
+    private String z304sequence;
     private String z304address1;
     private String z304address2;
     private String z304address3;
@@ -18,7 +18,7 @@ public class Address {
     private String z304zip;
     private String z304EmailAddres;
     private String z304Telephone;
-    private String getZ304Telephone2;
+    private String z304Telephone2;
     private String z304DateFrom;
     private String z304DateTo;
     private String z304AddressType;
@@ -31,12 +31,12 @@ public class Address {
         this.z304Id = z304Id;
     }
 
-    public String getGetZ304sequence() {
-        return getZ304sequence;
+    public String getZ304sequence() {
+        return z304sequence;
     }
 
-    public void setGetZ304sequence(String getZ304sequence) {
-        this.getZ304sequence = getZ304sequence;
+    public void setZ304sequence(String z304sequence) {
+        this.z304sequence = z304sequence;
     }
 
     public String getZ304address1() {
@@ -95,12 +95,12 @@ public class Address {
         this.z304Telephone = z304Telephone;
     }
 
-    public String getGetZ304Telephone2() {
-        return getZ304Telephone2;
+    public String getZ304Telephone2() {
+        return z304Telephone2;
     }
 
-    public void setGetZ304Telephone2(String getZ304Telephone2) {
-        this.getZ304Telephone2 = getZ304Telephone2;
+    public void setZ304Telephone2(String z304Telephone2) {
+        this.z304Telephone2 = z304Telephone2;
     }
 
     public String getZ304DateFrom() {
@@ -142,10 +142,63 @@ public class Address {
         Element z304=doc.createElement("z304");
 
         Element recordAction=doc.createElement("record-action");
-        recordAction.setNodeValue("A");
+        recordAction.appendChild(doc.createTextNode("A"));
         z304.appendChild(recordAction);
 
         //TODO
+        Element z304Id=doc.createElement("z304-id");
+        z304Id.appendChild(doc.createTextNode(this.z304Id));
+        z304.appendChild(z304Id);
+
+
+        Element getZ304sequence=doc.createElement("z304sequence");
+        getZ304sequence.appendChild(doc.createTextNode(this.z304sequence));
+        z304.appendChild(getZ304sequence);
+
+        Element z304address1=doc.createElement("z304-address-1");
+        z304address1.appendChild(doc.createTextNode(this.z304address1));
+        z304.appendChild(z304address1);
+
+        Element z304address2=doc.createElement("z304-address-2");
+        z304address2.appendChild(doc.createTextNode(this.z304address2));
+        z304.appendChild(z304address2);
+
+        Element z304address3=doc.createElement("z304-address-3");
+        z304address3.appendChild(doc.createTextNode(this.z304address3));
+        z304.appendChild(z304address3);
+
+        Element z304address4=doc.createElement("z304-address-4");
+        z304address4.appendChild(doc.createTextNode(this.z304address4));
+        z304.appendChild(z304address4);
+
+        Element z304zip=doc.createElement("z304-zip");
+        z304zip.appendChild(doc.createTextNode(this.z304zip));
+        z304.appendChild(z304zip);
+
+        Element z304EmailAddres=doc.createElement("z304-email-address");
+        z304EmailAddres.appendChild(doc.createTextNode(this.z304EmailAddres));
+        z304.appendChild(z304EmailAddres);
+
+        Element z304Telephone=doc.createElement("z304-telephone");
+        z304Telephone.appendChild(doc.createTextNode(this.z304Telephone));
+        z304.appendChild(z304Telephone);
+
+        Element z304Telephone2=doc.createElement("z304-telephone-2");
+        z304Telephone2.appendChild(doc.createTextNode(this.z304Telephone2));
+        z304.appendChild(z304Telephone2);
+
+        Element z304DateFrom=doc.createElement("z304-date-from");
+        z304DateFrom.appendChild(doc.createTextNode(this.z304DateFrom));
+        z304.appendChild(z304DateFrom);
+
+        Element z304DateTo=doc.createElement("z304-date-to");
+        z304DateTo.appendChild(doc.createTextNode(this.z304DateTo));
+        z304.appendChild(z304DateTo);
+
+        Element z304AddressType=doc.createElement("z304-address-type");
+        z304AddressType.appendChild(doc.createTextNode(this.z304AddressType));
+        z304.appendChild(z304AddressType);
+
 
        parent.appendChild(z304);
     }

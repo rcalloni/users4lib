@@ -8,6 +8,7 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -26,7 +27,7 @@ import users4lib.model.AlephUser;
 public class AlephWriter
 {
 
-   private void exportAlephUsers(List<AlephUser> users, String filePath) throws Exception
+   public void exportAlephUsers(List<AlephUser> users, String filePath) throws Exception
    {
        // TODO Auto-generated method stub
        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -44,14 +45,14 @@ public class AlephWriter
        // write the content into xml file
        TransformerFactory transformerFactory = TransformerFactory.newInstance();
        Transformer transformer = transformerFactory.newTransformer();
+       transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
        DOMSource source = new DOMSource(doc);
        StreamResult result = new StreamResult(new File(filePath));
 
        transformer.transform(source, result);
 
        System.out.println("File saved!");
-
-
 
    }
 

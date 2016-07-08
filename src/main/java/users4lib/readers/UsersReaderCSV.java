@@ -70,7 +70,7 @@ public class UsersReaderCSV implements UsersReader {
             global.setZ303Id(userId);
             global.setZ303UserType("REG");
             global.setZ303ConLng("ENG");
-            global.setZ303Name(firstName + lastName);
+            global.setZ303Name(firstName==null?"":firstName + lastName==null?"":lastName);
             global.setZ303Title("+");
             global.setZ303Delinq1("+");
             global.setZ303DelinqN1("+");
@@ -93,8 +93,7 @@ public class UsersReaderCSV implements UsersReader {
             global.setZ303WantSMS("N");
             global.setZ303TitleRegLimit("9999");
             global.setZ303Gender("+");
-            global.setZ303BirthDate(nationanlity);
-
+            global.setZ303BirthPlace(nationanlity==null?"":nationanlity);
             users.add(global);
         }
 
@@ -154,7 +153,14 @@ public class UsersReaderCSV implements UsersReader {
     }
 
     @Override
-    public String getFieldValue() {
+    public String getFieldValue()
+    {
         return null;
     }
+    public List<Global> getGlobalUsers()
+    {
+        return users;
+    }
+
+
 }
