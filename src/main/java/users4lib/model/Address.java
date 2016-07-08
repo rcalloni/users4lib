@@ -1,5 +1,8 @@
 package users4lib.model;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 /**
  * Created by luizfr on 3/21/16.
  */
@@ -130,6 +133,21 @@ public class Address {
 
     public void setRecordAction(String recordAction) {
         this.recordAction = recordAction;
+    }
+
+    public void saveXML(Document doc, Element parent)
+
+
+    {
+        Element z304=doc.createElement("z304");
+
+        Element recordAction=doc.createElement("record-action");
+        recordAction.setNodeValue("A");
+        z304.appendChild(recordAction);
+
+        //TODO
+
+       parent.appendChild(z304);
     }
 }
 

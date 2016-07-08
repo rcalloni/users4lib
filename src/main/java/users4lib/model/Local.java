@@ -1,5 +1,8 @@
 package users4lib.model;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 /**
  * Created by luizfr on 3/21/16.
  */
@@ -14,7 +17,6 @@ public class Local {
     private String z305Delinq1;
     private String z305DelinqN1;
     private String z305Note;
-
 
 
     public String getZ305Id() {
@@ -93,9 +95,28 @@ public class Local {
         return recrodAction;
     }
 
-    public void setRecrodAction(String recrodAction) {
+    public void setRecrodAction(String recrodAction)
+    {
         this.recrodAction = recrodAction;
     }
+
+    public void saveXML(Document doc, Element parent)
+    {
+
+        Element z305=doc.createElement("z305");
+        
+        Element recordAction=doc.createElement("record-action");
+        recordAction.setNodeValue("A");
+        z305.appendChild(recordAction);
+
+     //TODO
+
+        parent.appendChild(z305);
+
+    }
+
+
+
 }
 
 
