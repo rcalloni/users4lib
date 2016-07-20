@@ -52,12 +52,12 @@ public class UsersReaderCSV implements UsersReader {
         }
         if (iterator.hasNext()){
             CSVRecord record = iterator.next();
-            String lastName = csvUserFeilds.getValeuBypropertyName("Last Name");
-            String firstName = csvUserFeilds.getValeuBypropertyName("First Name");
-            String userType = csvUserFeilds.getValeuBypropertyName("User Type");
-            String emailAddress = csvUserFeilds.getValeuBypropertyName("Email Address");
-            String jobTitle = csvUserFeilds.getValeuBypropertyName("Job Title");
-            String nacioanlity = csvUserFeilds.getValeuBypropertyName("Nacionality");
+            String lastName = csvUserFeilds.getValeuBypropertyName("user.last.name");
+            String firstName = csvUserFeilds.getValeuBypropertyName("user.first.name");
+            String userType = csvUserFeilds.getValeuBypropertyName("user.type");
+            String emailAddress = csvUserFeilds.getValeuBypropertyName("user.email");
+            String jobTitle = csvUserFeilds.getValeuBypropertyName("user.job.title");
+            String nacioanlity = csvUserFeilds.getValeuBypropertyName("user.nationality");
             String phone = csvUserFeilds.getValeuBypropertyName("Business Phone");
             String fax = csvUserFeilds.getValeuBypropertyName("Fax Phone");
             String extensionNumber = csvUserFeilds.getValeuBypropertyName("ExtensionNumber");
@@ -96,12 +96,6 @@ public class UsersReaderCSV implements UsersReader {
             global.setZ303TitleRegLimit("9999");
             global.setZ303Gender("+");
             global.setZ303BirthDate(nacioanlity);
-
-
-
-
-
-
 
         }
 

@@ -49,8 +49,18 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <users-file>/Users/luizfr/Development/ideaprojects/users4lib/src/main/resources/source/ePortal_Telephone_Directory.csv</users-file>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

@@ -18,12 +18,14 @@ public class PropertiesCSVReaderTest {
 
     private static PropertiesCSVReader csvProperties;
     private static PropertiesCSVReader alephProperties;
+    private static PropertiesCSVReader configProperties;
 
     @BeforeClass
     public static void startUp(){
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         csvProperties = context.getBean("PropertiesCSVReader", PropertiesCSVReader.class);
         alephProperties = context.getBean("PropertiesUserRead", PropertiesCSVReader.class);
+        configProperties = context.getBean("PropertiesConfig", PropertiesCSVReader.class);
     }
 
     @Test
