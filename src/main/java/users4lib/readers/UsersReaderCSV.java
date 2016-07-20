@@ -15,10 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by luizfr on 3/22/16.
@@ -30,12 +27,14 @@ public class UsersReaderCSV implements UsersReader {
     private Iterator<CSVRecord> iterator;
     private String userSource;
     private ApplicationContext context;
+    private List<Global> users;
 
 
     @Override
     public void setUserSource(String userSource) {
 
         this.userSource = userSource;
+        this.users= new ArrayList<Global>();
 
         context  = new ClassPathXmlApplicationContext("application-context.xml");
         PropertiesCSVReader csvUserFeilds = context.getBean("PropertiesCSVReader", PropertiesCSVReader.class);
@@ -45,26 +44,25 @@ public class UsersReaderCSV implements UsersReader {
             parser = new CSVParser(reader, CSVFormat.EXCEL.withHeader());
             iterator = parser.iterator();
 
-
-
         } catch (IOException e) {
             throw new RuntimeException("It was not possible read from the csv file, caused by: " + e.getMessage());
         }
-        if (iterator.hasNext()){
+        while(iterator.hasNext()){
             CSVRecord record = iterator.next();
-            String lastName = csvUserFeilds.getValeuBypropertyName("Last Name");
-            String firstName = csvUserFeilds.getValeuBypropertyName("First Name");
-            String userType = csvUserFeilds.getValeuBypropertyName("User Type");
-            String emailAddress = csvUserFeilds.getValeuBypropertyName("Email Address");
-            String jobTitle = csvUserFeilds.getValeuBypropertyName("Job Title");
-            String nacioanlity = csvUserFeilds.getValeuBypropertyName("Nacionality");
-            String phone = csvUserFeilds.getValeuBypropertyName("Business Phone");
-            String fax = csvUserFeilds.getValeuBypropertyName("Fax Phone");
-            String extensionNumber = csvUserFeilds.getValeuBypropertyName("ExtensionNumber");
-            String office = csvUserFeilds.getValeuBypropertyName("office");
-            String department = csvUserFeilds.getValeuBypropertyName("Department");
-            String unit = csvUserFeilds.getValeuBypropertyName("Unit");
-            String officeLocation = csvUserFeilds.getValeuBypropertyName("Office Location");
+
+            String lastName =record.get(csvUserFeilds.getValeuBypropertyName("user.last.name"));
+            String firstName = record.get(csvUserFeilds.getValeuBypropertyName("user.first.name"));
+            String userType =record.get( csvUserFeilds.getValeuBypropertyName("user.type"));
+            String emailAddress = record.get(csvUserFeilds.getValeuBypropertyName("user.email"));
+            String jobTitle = record.get(csvUserFeilds.getValeuBypropertyName("user.job.title"));
+            String nationanlity = record.get(csvUserFeilds.getValeuBypropertyName("user.nationality"));
+            String phone = record.get(csvUserFeilds.getValeuBypropertyName("user.phone"));
+            String fax = record.get(csvUserFeilds.getValeuBypropertyName("user.fax"));
+            String extensionNumber = record.get(csvUserFeilds.getValeuBypropertyName("user.extensionNumber"));
+            String office = record.get(csvUserFeilds.getValeuBypropertyName("user.office"));
+            String department = record.get(csvUserFeilds.getValeuBypropertyName("user.department"));
+            String unit = record.get(csvUserFeilds.getValeuBypropertyName("user.unit"));
+            String officeLocation = record.get(csvUserFeilds.getValeuBypropertyName("user.OfficeLocation"));
 
             String userId = getIdFromEmail(emailAddress);
             Global global = new Global();
@@ -72,7 +70,7 @@ public class UsersReaderCSV implements UsersReader {
             global.setZ303Id(userId);
             global.setZ303UserType("REG");
             global.setZ303ConLng("ENG");
-            global.setZ303Name(firstName + lastName);
+            global.setZ303Name(firstName==null?"":firstName + lastName==null?"":lastName);
             global.setZ303Title("+");
             global.setZ303Delinq1("+");
             global.setZ303DelinqN1("+");
@@ -95,14 +93,8 @@ public class UsersReaderCSV implements UsersReader {
             global.setZ303WantSMS("N");
             global.setZ303TitleRegLimit("9999");
             global.setZ303Gender("+");
-            global.setZ303BirthDate(nacioanlity);
-
-
-
-
-
-
-
+            global.setZ303BirthPlace(nationanlity==null?"":nationanlity);
+            users.add(global);
         }
 
     }
@@ -161,7 +153,14 @@ public class UsersReaderCSV implements UsersReader {
     }
 
     @Override
-    public String getFieldValue() {
+    public String getFieldValue()
+    {
         return null;
     }
+    public List<Global> getGlobalUsers()
+    {
+        return users;
+    }
+
+
 }
