@@ -9,8 +9,11 @@
         <constructor-arg value="config/csv-mapping.properties"/>
     </bean>
 
-    <bean class="users4lib.config.PropertiesCSVReader" id="PropertiesUserRead">
+    <bean class="users4lib.config.PropertiesCSVReader" id="PropertiesAlephRead">
         <constructor-arg value="config/aleph-mapping.properties"/>
     </bean>
 
+    <bean class="users4lib.config.PropertiesCSVReader" id="PropertiesConfig">
+        <constructor-arg value="config/user4lib.properties"/>
+    </bean>
 </beans>

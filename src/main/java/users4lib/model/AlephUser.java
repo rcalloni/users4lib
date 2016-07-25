@@ -12,7 +12,7 @@ public class AlephUser {
 
     private List<Local> localList = new ArrayList<>();
     private List<Address>  addressList = new ArrayList<>();
-    private Global global = new Global();
+    private Global global;
 
 
     public Global getGlobal() {
@@ -30,6 +30,11 @@ public class AlephUser {
 
     public void addAddress(Address address){
         addressList.add(address);
+    }
+
+    public void addLocal (Local local){
+        localList.add(local);
+
     }
 
     public void saveXML(Document doc, Element parent)

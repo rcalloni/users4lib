@@ -19,19 +19,9 @@ public class AlephWriterTest {
     public void getAInstanceTest(){
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         UsersReader reader = context.getBean("UsersReader", UsersReader.class);
-        reader.setUserSource("/Users/alejandrorodriguez/Documents/4_Consultoria/BID/NewProjects/Users/input_ePortal_Telephone_Directory.csv");
+        reader.setUserSource("/Users/luizfr/Development/ideaprojects/users4lib/src/main/resources/source/ePortal_Telephone_Directory.csv");
 
-        List<Global> users= reader.getGlobalUsers();
-
-        List<AlephUser>alephUsers= new ArrayList<AlephUser>();
-
-        for (Global gu:users)
-        {
-            AlephUser au=new AlephUser();
-            au.setGlobal(gu);
-            alephUsers.add(au);
-        }
-
+        List<AlephUser>alephUsers = reader.getUsers();
 
         AlephWriter aw = new AlephWriter();
         try {
