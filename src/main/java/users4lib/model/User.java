@@ -1,18 +1,9 @@
 package users4lib.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by luizfr on 3/24/16.
+ * Created by Luiz Claudio Santos on 8/10/16.
  */
-public class User {
+public interface User {
 
-    private List<Field> fields = new ArrayList<Field>();
-
-    public void addField(Field field){
-        fields.add(field);
-    }
-
-
+    public String getId();
 }

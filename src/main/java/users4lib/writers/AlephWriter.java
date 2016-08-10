@@ -20,6 +20,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import users4lib.model.AlephUser;
+import users4lib.model.User;
 
 /**
  * Created by alejandrorodriguez on 7/8/16.
@@ -27,17 +28,19 @@ import users4lib.model.AlephUser;
 public class AlephWriter
 {
 
-   public void exportAlephUsers(List<AlephUser> users, String filePath) throws Exception
+   public void exportAlephUsers(List<User> users, String filePath) throws Exception
    {
        // TODO Auto-generated method stub
        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
        DocumentBuilder builder = factory.newDocumentBuilder();
 
        // root elements
        Document doc = builder.newDocument();
        Element rootElement = doc.createElement("p-file-20");
-       for (AlephUser u:users) {
-           u.saveXML(doc,rootElement);
+       for (User u:users) {
+           AlephUser alephUser = (AlephUser) u;
+           alephUser.saveXML(doc,rootElement);
        }
 
        doc.appendChild(rootElement);
@@ -46,6 +49,7 @@ public class AlephWriter
        TransformerFactory transformerFactory = TransformerFactory.newInstance();
        Transformer transformer = transformerFactory.newTransformer();
        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
 
        DOMSource source = new DOMSource(doc);
        StreamResult result = new StreamResult(new File(filePath));

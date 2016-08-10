@@ -3,7 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="users4lib.readers.UsersReaderCSV" id="UsersReader"/>
+    <bean class="users4lib.readers.UsersReaderAlephCSV" id="UsersReaderAleph"/>
+
+    <bean class="users4lib.readers.UsersReaderEzproxyCSV" id="UsersReaderEzproxy"/>
 
     <bean class="users4lib.config.PropertiesCSVReader" id="PropertiesCSVReader">
         <constructor-arg value="config/csv-mapping.properties"/>
@@ -16,4 +18,9 @@
     <bean class="users4lib.config.PropertiesCSVReader" id="PropertiesConfig">
         <constructor-arg value="config/user4lib.properties"/>
     </bean>
+
+    <bean class="users4lib.config.PropertiesCSVReader" id="PropertiesEZproxyRead">
+        <constructor-arg value="config/ezproxy-mapping.properties"/>
+    </bean>
+
 </beans>

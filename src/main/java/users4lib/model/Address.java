@@ -135,10 +135,8 @@ public class Address {
         this.recordAction = recordAction;
     }
 
-    public void saveXML(Document doc, Element parent)
+    public void saveXML(Document doc, Element parent) {
 
-
-    {
         Element z304=doc.createElement("z304");
 
         Element recordAction=doc.createElement("record-action");

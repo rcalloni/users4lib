@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import users4lib.model.AlephUser;
 import users4lib.model.Global;
+import users4lib.model.User;
 import users4lib.readers.UsersReader;
 
 import java.util.ArrayList;
@@ -18,10 +19,10 @@ public class AlephWriterTest {
     @Test
     public void getAInstanceTest(){
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
-        UsersReader reader = context.getBean("UsersReader", UsersReader.class);
+        UsersReader reader = context.getBean("UsersReaderAleph", UsersReader.class);
         reader.setUserSource("/Users/luizfr/Development/ideaprojects/users4lib/src/main/resources/source/ePortal_Telephone_Directory.csv");
 
-        List<AlephUser>alephUsers = reader.getUsers();
+        List<User>alephUsers = reader.getUsers();
 
         AlephWriter aw = new AlephWriter();
         try {

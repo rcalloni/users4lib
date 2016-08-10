@@ -9,6 +9,8 @@ import users4lib.readers.UsersReader;
  */
 public class Users4Lib {
 
+
+    // TODO add main options here
     public static void main(String [] main){
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         UsersReader reader = context.getBean("UsersReader", UsersReader.class);

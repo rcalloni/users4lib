@@ -363,10 +363,7 @@ public class Global {
         z303.appendChild(z303DelinqN3);
 
         Element z303Buget=doc.createElement("z303-buget");
-        if(!this.z303Buget.equals(""))
-        {
-            z303Buget.appendChild(doc.createTextNode(this.z303Buget));
-        }
+        z303Buget.appendChild(doc.createTextNode(this.z303Buget));
         z303.appendChild(z303Buget);
 
         Element z303ProfileId=doc.createElement("z303-profile-id");
@@ -451,12 +448,13 @@ public class Global {
 
         Element z303WantSMS=doc.createElement("z303-want-sms");
         if(!this.z303WantSMS.equals("")){
-            z303ConLng.appendChild(doc.createTextNode(this.z303WantSMS));}
+            z303WantSMS.appendChild(doc.createTextNode(this.z303WantSMS));}
         z303.appendChild(z303WantSMS);
 
         Element z303TitleRegLimit=doc.createElement("z303-title-reg-limit");
         if(!this.z303TitleRegLimit.equals("")){
-            z303ConLng.appendChild(doc.createTextNode(this.z303TitleRegLimit));}
+            z303TitleRegLimit.appendChild(doc.createTextNode(this.z303TitleRegLimit));
+        }
         z303.appendChild(z303TitleRegLimit);
 
         Element z303Gender=doc.createElement("z303-gender");
@@ -466,7 +464,8 @@ public class Global {
 
         Element z303BirthPlace=doc.createElement("z303-birthplace");
         if(!this.z303BirthPlace.equals("")){
-            z303BirthPlace.appendChild(doc.createTextNode(this.z303BirthPlace));}
+            z303BirthPlace.appendChild(doc.createTextNode(this.z303BirthPlace));
+        }
         z303.appendChild(z303BirthPlace);
 
         parent.appendChild(z303);
