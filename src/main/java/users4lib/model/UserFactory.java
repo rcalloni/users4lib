@@ -130,7 +130,7 @@ public class UserFactory {
         address.setZ304Telephone(phone==null || phone.equals("")?"+":phone);
         address.setZ304Telephone2(fax==null || fax.equals("")?"+":fax);
         address.setZ304DateFrom("20090101");
-        address.setZ304DateTo("20161231");
+        address.setZ304DateTo("20171231");
         address.setZ304AddressType("01");
         address.setZ304address3("+");
         address.setZ304address4("+");
